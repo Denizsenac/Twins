@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1e0b05c-cee4-4099-a4e0-db306be14c6a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/Enigma-Edited2.jar" afterDir="false" />
+    <list default="true" id="a1e0b05c-cee4-4099-a4e0-db306be14c6a" name="Changes" comment="test commit">
+      <change afterPath="$PROJECT_DIR$/src/CollisionControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameBoard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameControls.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RandomSpawner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,27 +65,26 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Sezer/Projects/Twins/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Console Font&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Sezer\Projects\Twins\src" />
       <recent name="C:\Users\Sezer\Projects\Twins\lib" />
       <recent name="C:\Users\Sezer\Projects\Twins\Twins" />
       <recent name="C:\Users\Sezer\Projects\Twins\Twins\src" />
       <recent name="C:\Users\Sezer\Projects\old" />
-      <recent name="C:\Users\Sezer\Projects" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Twins" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Twins" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -95,11 +100,6 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -120,8 +120,25 @@
       <workItem from="1771582639423" duration="289000" />
       <workItem from="1771582950565" duration="566000" />
       <workItem from="1771583558407" duration="82000" />
-      <workItem from="1771583648612" duration="504000" />
+      <workItem from="1771583648612" duration="4804000" />
     </task>
+    <task id="LOCAL-00001" summary="test commit">
+      <option name="closed" value="true" />
+      <created>1771584173223</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1771584173223</updated>
+    </task>
+    <task id="LOCAL-00002" summary="test commit">
+      <option name="closed" value="true" />
+      <created>1771584206417</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1771584206417</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,5 +154,23 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="test commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GameBoard.java</url>
+          <line>113</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Twins$Main.ic" NAME="Main Coverage Results" MODIFIED="1771585847662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>
