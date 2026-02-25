@@ -16,21 +16,32 @@ public class GameBoard {
     }
 
     private void initializeMap() {
-        for (int i = 0; i < mapHeight; i++) {
-            for (int j = 0; j < mapWidth; j++) {
-                
-                if (i == 0 || i == mapHeight - 1 || j == 0 || j == mapWidth - 1) {
-                    map[i][j] = '#'; 
-                } else {
-                    map[i][j] = ' '; 
-                }
+        boolean wallCheck;
+        do {
+            wallCheck = true;
+            for (int i = 0; i < mapHeight; i++) {
+                for (int j = 0; j < mapWidth; j++) {
 
+                    if (i == 0 || i == mapHeight - 1 || j == 0 || j == mapWidth - 1) {
+                        map[i][j] = '#';
+                    } else {
+                        map[i][j] = ' ';
+                    }
+
+                }
             }
-        }
-        addWalls(4,8);
-        addWalls(6,6);
-        addWalls(20,4);
-        addWalls(5,3);
+            addWalls(4,8);
+            addWalls(6,6);
+            addWalls(20,4);
+            addWalls(5,3);
+            if (!checkWalls(2,3)) wallCheck = false;
+            if (!checkWalls(3,5)) wallCheck = false;
+            if (!checkWalls(4,7)) wallCheck = false;
+            if (!checkWalls(6,15)) wallCheck = false;
+            if (!checkConnected()) wallCheck = false;
+            if (wallCheck) break;
+        } while (true);
+
     }
     public void addWalls(int wallcount,int walllength) {
         int randomx,randomy,randomdir;
@@ -102,7 +113,79 @@ public class GameBoard {
             }
             wallcount--;
         }
-        return;
+    }
+
+    private boolean checkWalls(int checkbox, int checksize) {
+        return checkWalls(checkbox,checkbox,checksize);
+    }
+
+    private boolean checkWalls(int checkwidth,int checkheight,int checksize) {
+        if (checksize > checkwidth * checkheight) return false;
+        int wallcount = 0;
+        int startx = 1;
+        int starty = 1;
+        while(starty + checkheight <= 25)
+        {
+            while (startx + checkwidth <= 55)
+            {
+                for (int j = startx; j < startx + checkwidth; j++ )
+                    for (int i = starty; i < starty + checkheight; i++)
+                    {
+                        if(map[i][j] == '#')
+                            wallcount++;
+                        if(wallcount > checksize)
+                            return false;
+                    }
+                wallcount = 0;
+                startx++;
+            }
+            startx = 1;
+            starty++;
+        }
+        return true;
+    }
+
+    private boolean checkConnected() {
+        int randomx,randomy;
+        char[][] connectionmap = new char[map.length][map[0].length];
+        for (int i = 0; i < connectionmap.length; i++)
+            for (int j = 0; j < connectionmap[0].length; j++)
+                connectionmap[i][j] = map[i][j];
+        while (true)
+        {
+            randomx = (int) (Math.random() * 23 + 1);
+            randomy = (int) (Math.random() * 53 + 1);
+            if (map[randomx][randomy] == ' ') {
+                connectionmap[randomx][randomy] = '+';
+                connectionmap = searhConnection(randomx,randomy,connectionmap);
+                break;
+            }
+        }
+        for (int i = 0; i < connectionmap.length; i++)
+            for (int j = 0; j < connectionmap[0].length; j++)
+                if (connectionmap[i][j] == ' ') return false;
+        return true;
+    }
+
+    private char[][] searhConnection(int x, int y,char[][] connectionmap){
+
+        if (x < 24 && connectionmap[x + 1][y] == ' ') {
+            connectionmap[x + 1][y] = '+';
+            connectionmap = searhConnection(x + 1,y,connectionmap);
+        }
+        if (y < 54 && connectionmap[x][y + 1] == ' ') {
+            connectionmap[x][y + 1] = '+';
+            connectionmap = searhConnection(x,y + 1,connectionmap);
+        }
+        if (x > 0 && connectionmap[x - 1][y] == ' ') {
+            connectionmap[x - 1][y] = '+';
+            connectionmap = searhConnection(x - 1, y, connectionmap);
+        }
+        if (y > 0 && connectionmap[x][y - 1] == ' ') {
+            connectionmap[x][y - 1] = '+';
+            connectionmap = searhConnection(x, y - 1, connectionmap);
+        }
+        return connectionmap;
     }
 
     public void printBoard(Console console) {
