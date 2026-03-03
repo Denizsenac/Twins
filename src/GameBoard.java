@@ -43,13 +43,14 @@ public class GameBoard {
         } while (true);
 
     }
+
     public void addWalls(int wallcount,int walllength) {
         int randomx,randomy,randomdir;
         boolean canplace = true;
         while(wallcount > 0)
         {
-            randomx = (int) ((Math.random() * 23) + 1);
-            randomy = (int) ((Math.random() * 53) + 1);
+            randomx = (int) ((Math.random() * (mapHeight - 2)) + 1);
+            randomy = (int) ((Math.random() * (mapWidth - 2)) + 1);
             if(map[randomx][randomy] != '#')
             {
                 randomdir = (int) (Math.random() * 4);
@@ -67,7 +68,7 @@ public class GameBoard {
                     }
                     else for (int i = 0; i < walllength; i++) map[randomx - i][randomy] = '#';
                 }
-                else if (randomdir == 1 && (53 - randomy) >= (walllength - 1))
+                else if (randomdir == 1 && (mapHeight - randomy) > walllength)
                 {
                     for (int i = 1; i < walllength;i++) if (map[randomx][randomy + i] == '#')
                     {
@@ -81,7 +82,7 @@ public class GameBoard {
                     }
                     else for (int i = 0; i < walllength; i++) map[randomx][randomy + i] = '#';
                 }
-                else if (randomdir == 2 && 23 - randomx >= walllength - 1)
+                else if (randomdir == 2 && (mapWidth - randomx) > walllength)
                 {
                     for (int i = 1; i < walllength;i++) if (map[randomx + i][randomy] == '#')
                     {
@@ -124,9 +125,9 @@ public class GameBoard {
         int wallcount = 0;
         int startx = 1;
         int starty = 1;
-        while(starty + checkheight <= 25)
+        while(starty + checkheight <= mapWidth)
         {
-            while (startx + checkwidth <= 55)
+            while (startx + checkwidth <= mapHeight)
             {
                 for (int j = startx; j < startx + checkwidth; j++ )
                     for (int i = starty; i < starty + checkheight; i++)
@@ -153,8 +154,8 @@ public class GameBoard {
                 connectionmap[i][j] = map[i][j];
         while (true)
         {
-            randomx = (int) (Math.random() * 23 + 1);
-            randomy = (int) (Math.random() * 53 + 1);
+            randomx = (int) ((Math.random() * (mapHeight - 2)) + 1);
+            randomy = (int) ((Math.random() * (mapWidth - 2)) + 1);
             if (map[randomx][randomy] == ' ') {
                 connectionmap[randomx][randomy] = '+';
                 connectionmap = searhConnection(randomx,randomy,connectionmap);
@@ -169,11 +170,11 @@ public class GameBoard {
 
     private char[][] searhConnection(int x, int y,char[][] connectionmap){
 
-        if (x < 24 && connectionmap[x + 1][y] == ' ') {
+        if (x < mapWidth - 1 && connectionmap[x + 1][y] == ' ') {
             connectionmap[x + 1][y] = '+';
             connectionmap = searhConnection(x + 1,y,connectionmap);
         }
-        if (y < 54 && connectionmap[x][y + 1] == ' ') {
+        if (y < mapHeight - 1 && connectionmap[x][y + 1] == ' ') {
             connectionmap[x][y + 1] = '+';
             connectionmap = searhConnection(x,y + 1,connectionmap);
         }
