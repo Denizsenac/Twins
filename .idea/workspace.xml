@@ -4,15 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1e0b05c-cee4-4099-a4e0-db306be14c6a" name="Changes" comment="addWalls()">
+    <list default="true" id="a1e0b05c-cee4-4099-a4e0-db306be14c6a" name="Changes" comment="Area and conenction checks">
+      <change afterPath="$PROJECT_DIR$/src/Timer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Twins/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Twins/GameBoard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameBoard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -109,7 +116,8 @@
       <workItem from="1771582950565" duration="566000" />
       <workItem from="1771583558407" duration="82000" />
       <workItem from="1771583648612" duration="4938000" />
-      <workItem from="1772024092802" duration="3082000" />
+      <workItem from="1772024092802" duration="4167000" />
+      <workItem from="1772541013021" duration="1633000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <option name="closed" value="true" />
@@ -143,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772024389712</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Area and conenction checks">
+      <option name="closed" value="true" />
+      <created>1772027516233</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1772027516233</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +179,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test commit" />
     <MESSAGE value="addWalls()" />
-    <option name="LAST_COMMIT_MESSAGE" value="addWalls()" />
+    <MESSAGE value="Area and conenction checks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Area and conenction checks" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Twins$Main.ic" NAME="Main Coverage Results" MODIFIED="1771585847662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
