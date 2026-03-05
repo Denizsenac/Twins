@@ -11,7 +11,6 @@ public class BCharacter {
         this.y = startY;
     }
 
-   
     public void move(MoveTrack tracker, GameBoard board, int currentMode, TrailManager tm, int currentTick) {
         int nextX = this.x;
         int nextY = this.y;
@@ -26,9 +25,7 @@ public class BCharacter {
 
         CollisionControl collision = new CollisionControl();
         if (collision.canMove(board.getMap(), nextX, nextY)) {
-           
             tm.addTrail(this.x, this.y, currentTick);
-            
             this.x = nextX;
             this.y = nextY;
         }
@@ -39,11 +36,12 @@ public class BCharacter {
             cn.getTextWindow().output((this.x * 2) + 4, this.y + 2, 'B');
         }
     }
-    
- // Koordinatları dışarıdan okuyabilmek için
+
     public int getX() { return this.x; }
     public int getY() { return this.y; }
-    
-    
-    
+
+    public void setPosition(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 }

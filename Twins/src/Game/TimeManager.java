@@ -11,7 +11,11 @@ public class TimeManager {
         return ticks;
     }
 
+    public void setTicks(int ticks) {
+        this.ticks = ticks;
+    }
+
     public boolean isRobotTurn() {
-        return ticks % 4 == 0; 
+        return ticks % 4 == 0;
     }
 }
