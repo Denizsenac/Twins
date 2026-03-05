@@ -12,25 +12,23 @@ public class ModeMenuUI {
         }
     }
     
-    public void drawMenu(Console cn, int selectedOption) {
+    public void drawMenu(Console cn, int selectedOption, int startX, int startY) {
         
         TextAttributes cyanColor = new TextAttributes(Color.CYAN, Color.BLACK);
         TextAttributes whiteColor = new TextAttributes(Color.WHITE, Color.BLACK);
         TextAttributes grayColor = new TextAttributes(Color.LIGHT_GRAY, Color.BLACK);
         
-        drawText(cn, 0, 4, "                     ================================", cyanColor);
-        drawText(cn, 0, 5, "                       TWINS - GAME MODE SELECTION   ", cyanColor);
-        drawText(cn, 0, 6, "                     ================================", cyanColor);
+        drawText(cn, startX, startY,     "   --- GAME MODE SELECTION ---   ", cyanColor);
         
         if (selectedOption == 1) {
-            drawText(cn, 0, 9,  "             >> MODE  1 : Your twin moves in the SAME direction <<", cyanColor);
-            drawText(cn, 0, 11, "                MODE -1 : Your twin moves in the OPPOSITE direction   ", grayColor);
+            drawText(cn, startX, startY + 3, "       >> Randomized Map <<       ", cyanColor);
+            drawText(cn, startX, startY + 5,   "            Export Map             ", grayColor);
         } else {
-            drawText(cn, 0, 9,  "                MODE  1 : Your twin moves in the SAME direction   ", grayColor);
-            drawText(cn, 0, 11, "             >> MODE -1 : Your twin moves in the OPPOSITE direction <<", cyanColor);
+            drawText(cn, startX, startY + 3, "          Randomized Map        ", grayColor);
+            drawText(cn, startX, startY + 5, "        >> Export Map <<          ", cyanColor);
         }
         
-        drawText(cn, 0, 14, "          ----------------------------------------------------------", whiteColor);
-        drawText(cn, 0, 15, "           Use [UP/DOWN] arrow keys to navigate, [ENTER] to select", whiteColor);
+        drawText(cn, startX - 5, startY + 8, "---------------------------------------", whiteColor);
+        drawText(cn, startX - 5, startY + 9, " [UP/DOWN] to navigate, [ENTER] to select ", whiteColor);
     }
 }

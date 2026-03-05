@@ -6,18 +6,17 @@ import java.awt.event.KeyListener;
 
 public class ModeControl {
     
-    
     private int menuKeypr = 0;
     private int menuRkey = 0;
 
     public int selectMode(Console cn) throws InterruptedException {
         ModeMenuUI ui = new ModeMenuUI();
+        TitleScreen logo = new TitleScreen(); 
         int currentSelection = 1; 
         
-        
-        ui.drawMenu(cn, currentSelection);
+        logo.drawLogo(cn, 67, 10);
+        ui.drawMenu(cn, currentSelection, 80, 20);
 
-        
         KeyListener menuListener = new KeyListener() {
             public void keyTyped(KeyEvent e) {}
             public void keyPressed(KeyEvent e) {
@@ -29,19 +28,17 @@ public class ModeControl {
             public void keyReleased(KeyEvent e) {}
         };
 
-        
         cn.getTextWindow().addKeyListener(menuListener);
 
         int finalMode = 1;
         boolean isSelecting = true;
 
-        
         while (isSelecting) {
             if (menuKeypr == 1) {
                 
                 if (menuRkey == KeyEvent.VK_UP || menuRkey == KeyEvent.VK_DOWN) {
                     currentSelection = (currentSelection == 1) ? -1 : 1;
-                    ui.drawMenu(cn, currentSelection); 
+                    ui.drawMenu(cn, currentSelection, 80, 20); 
                 } 
                 
                 else if (menuRkey == KeyEvent.VK_ENTER) {
@@ -53,15 +50,13 @@ public class ModeControl {
             Thread.sleep(20); 
         }
 
-        // ÇOK ÖNEMLİ: Seçim bittiği için bu dinleyiciyi kaldırıyoruz ki oyunun kendi hareket kontrollerini bozmasın!
         cn.getTextWindow().removeKeyListener(menuListener);
         
-        
-        cn.getTextWindow().setCursorPosition(0, 0);
-        for(int i=0; i<15; i++) {
-            System.out.println("                                                                        ");
+        for (int y = 0; y < 50; y++) {
+            for (int x = 0; x < 200; x++) {
+                cn.getTextWindow().output(x, y, ' ');
+            }
         }
-        cn.getTextWindow().setCursorPosition(0, 0);
 
         return finalMode;
     }
