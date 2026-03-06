@@ -20,7 +20,7 @@ public class ModeMenuUI {
         drawText(cn, startX, startY,     "   --- GAME MODE SELECTION ---   ", cyanColor);
 
         drawText(cn, startX, startY + 3, selectedOption == 1  ? "       >> Randomized Map <<       " : "          Randomized Map          ", selectedOption == 1  ? cyanColor : grayColor);
-        drawText(cn, startX, startY + 5, selectedOption == -1 ? "        >>  Export Map  <<        " : "            Export Map            ", selectedOption == -1 ? cyanColor : grayColor);
+        drawText(cn, startX, startY + 5, selectedOption == 2  ? "        >>  Export Map  <<        " : "            Export Map            ", selectedOption == 2  ? cyanColor : grayColor);
 
         drawText(cn, startX - 5, startY + 8,  "---------------------------------------", whiteColor);
         drawText(cn, startX - 5, startY + 9,  " [UP/DOWN] to navigate, [ENTER] to select ", whiteColor);

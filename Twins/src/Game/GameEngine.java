@@ -1,4 +1,3 @@
-
 package Game;
 
 import enigma.console.Console;
@@ -69,7 +68,7 @@ public class GameEngine {
                 int key = controls.consumeKey();
                 if (key != 0) {
                     if (key == KeyEvent.VK_UP || key == KeyEvent.VK_DOWN) {
-                        selectedModeOption = (selectedModeOption == 1) ? -1 : 1;
+                        selectedModeOption = (selectedModeOption == 1) ? 2 : 1;
                     } else if (key == KeyEvent.VK_ENTER) {
                         inMenu = false;
                     }
@@ -89,7 +88,7 @@ public class GameEngine {
                 twin = new BCharacter(px, py);
 
                 int[] robotSpawn = spawner.getSpawnPoint(board.getMap());
-                enemyManager.addXRobot(robotSpawn[0], robotSpawn[1]);
+                enemyManager.addXRobot(robotSpawn[0], robotSpawn[1], 3);
 
             } else {
                 if (!SaveLoad.saveExists()) {
@@ -201,7 +200,7 @@ public class GameEngine {
                     }
 
                     if (playerMoved && (moveX != 0 || moveY != 0)) {
-                        twin.move(tracker, board, modeManager.getMode(), trailManager, currentTick);
+                        twin.move(tracker, board, modeManager.getMode(), trailManager, currentTick, enemyManager);
                     }
                 }
 

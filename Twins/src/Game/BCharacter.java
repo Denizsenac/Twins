@@ -11,7 +11,7 @@ public class BCharacter {
         this.y = startY;
     }
 
-    public void move(MoveTrack tracker, GameBoard board, int currentMode, TrailManager tm, int currentTick) {
+    public void move(MoveTrack tracker, GameBoard board, int currentMode, TrailManager tm, int currentTick, EnemyManager enemyManager) {
         int nextX = this.x;
         int nextY = this.y;
 
@@ -24,7 +24,7 @@ public class BCharacter {
         }
 
         CollisionControl collision = new CollisionControl();
-        if (collision.canMove(board.getMap(), nextX, nextY)) {
+        if (collision.canPlayerMove(board.getMap(), nextX, nextY, enemyManager)) {
             tm.addTrail(this.x, this.y, currentTick);
             this.x = nextX;
             this.y = nextY;
