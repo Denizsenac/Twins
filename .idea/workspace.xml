@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1e0b05c-cee4-4099-a4e0-db306be14c6a" name="Changes" comment="Area and conenction checks">
-      <change afterPath="$PROJECT_DIR$/src/Timer.java" afterDir="false" />
+    <list default="true" id="a1e0b05c-cee4-4099-a4e0-db306be14c6a" name="Changes" comment="Timer and corrections">
+      <change afterPath="$PROJECT_DIR$/src/MazeGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Timer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +102,6 @@
     <attachedChunks>
       <set>
         <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.30387.90" />
       </set>
     </attachedChunks>
   </component>
@@ -117,7 +118,8 @@
       <workItem from="1771583558407" duration="82000" />
       <workItem from="1771583648612" duration="4938000" />
       <workItem from="1772024092802" duration="4167000" />
-      <workItem from="1772541013021" duration="1633000" />
+      <workItem from="1772541013021" duration="1981000" />
+      <workItem from="1774180453606" duration="8000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <option name="closed" value="true" />
@@ -159,7 +161,23 @@
       <option name="project" value="LOCAL" />
       <updated>1772027516233</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Timer and corrections">
+      <option name="closed" value="true" />
+      <created>1772542850552</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1772542850553</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Timer and corrections">
+      <option name="closed" value="true" />
+      <created>1772542887110</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1772542887110</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +198,8 @@
     <MESSAGE value="test commit" />
     <MESSAGE value="addWalls()" />
     <MESSAGE value="Area and conenction checks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Area and conenction checks" />
+    <MESSAGE value="Timer and corrections" />
+    <option name="LAST_COMMIT_MESSAGE" value="Timer and corrections" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Twins$Main.ic" NAME="Main Coverage Results" MODIFIED="1771585847662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
