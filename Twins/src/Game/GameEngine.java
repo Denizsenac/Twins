@@ -12,6 +12,7 @@ public class GameEngine {
     private TimeManager timeManager;
     private TrailManager trailManager;
     private EnemyManager enemyManager;
+    private TreasureManager treasureManager; // YENİ
 
     private BModeManager modeManager;
     private BCharacter twin;
@@ -23,12 +24,16 @@ public class GameEngine {
     private int px, py;
     private int selectedModeOption = 1;
 
+    private int playerScore = 0;   // YENİ
+    private int computerScore = 0; // YENİ
+
     public GameEngine() throws Exception {
         cn = Enigma.getConsole("Twins - Maze Game", 200, 50, 12);
         controls = new GameControls(cn);
         timeManager = new TimeManager();
         trailManager = new TrailManager();
         enemyManager = new EnemyManager();
+        treasureManager = new TreasureManager(); // YENİ
 
         modeManager = new BModeManager();
         tracker = new MoveTrack();
@@ -51,12 +56,20 @@ public class GameEngine {
         }
     }
 
+    // Sağ taraftaki skor panelini günceller
+    private void drawScorePanel() {
+        drawText(120, 2, "P.Score : " + playerScore + "   ");
+        drawText(120, 3, "C.Score : " + computerScore + "   ");
+    }
+
     public void start() throws InterruptedException, IOException {
 
         while (true) {
             boolean inMenu = true;
             int lastOption = 0;
             selectedModeOption = 1;
+            playerScore = 0;   // YENİ - her yeni oyunda sıfırla
+            computerScore = 0; // YENİ
 
             while (inMenu) {
                 if (selectedModeOption != lastOption) {
@@ -88,7 +101,16 @@ public class GameEngine {
                 twin = new BCharacter(px, py);
 
                 int[] robotSpawn = spawner.getSpawnPoint(board.getMap());
-                enemyManager.addXRobot(robotSpawn[0], robotSpawn[1], 3);
+                enemyManager.addXRobot(robotSpawn[0], robotSpawn[1], 1000);
+
+                // C-Robot spawn et
+                int[] cRobotSpawn = spawner.getSpawnPoint(board.getMap());
+                enemyManager.addCRobot(cRobotSpawn[0], cRobotSpawn[1]);
+
+                // Başlangıçta 10 hazine koy (proje dökümanı)
+                for (int i = 0; i < 10; i++) {
+                    treasureManager.spawnTreasure(board.getMap());
+                }
 
             } else {
                 if (!SaveLoad.saveExists()) {
@@ -136,9 +158,11 @@ public class GameEngine {
             }
 
             board.printBoard(cn);
+            treasureManager.drawTreasures(cn, board.getMap()); // YENİ
             cn.getTextWindow().output((px * 2) + 4, py + 2, 'A');
             twin.draw(cn, px, py);
             enemyManager.drawRobots(cn);
+            drawScorePanel(); // YENİ
 
             while (true) {
                 timeManager.tick();
@@ -197,15 +221,48 @@ public class GameEngine {
                         trailManager.addTrail(px, py, currentTick);
                         px = nextX;
                         py = nextY;
+
+                        // A hazine topladı mı? YENİ
+                        int gained = treasureManager.checkPlayerCollect(board.getMap(), px, py);
+                        if (gained > 0) {
+                            playerScore += gained;
+                            // Hazine alınan kareyi ekranda temizle
+                            cn.getTextWindow().output((px * 2) + 4, py + 2, ' ');
+                            drawScorePanel();
+                        }
                     }
 
                     if (playerMoved && (moveX != 0 || moveY != 0)) {
                         twin.move(tracker, board, modeManager.getMode(), trailManager, currentTick, enemyManager);
+
+                        // B hazine topladı mı? YENİ
+                        int gainedB = treasureManager.checkPlayerCollect(board.getMap(), twin.getX(), twin.getY());
+                        if (gainedB > 0) {
+                            playerScore += gainedB;
+                            cn.getTextWindow().output((twin.getX() * 2) + 4, twin.getY() + 2, ' ');
+                            drawScorePanel();
+                        }
                     }
                 }
 
                 if (timeManager.isRobotTurn()) {
                     enemyManager.moveRobots(board, trailManager, currentTick, px, py, twin);
+
+                    // C-Robot hazine topladı mı kontrol et YENİ
+                    for (int i = 0; i < enemyManager.getCRobotCount(); i++) {
+                        int gained = treasureManager.checkRobotCollect(board.getMap(), enemyManager.getCRobotX(i), enemyManager.getCRobotY(i));
+                        if (gained > 0) {
+                            computerScore += gained;
+                            cn.getTextWindow().output((enemyManager.getCRobotX(i) * 2) + 4, enemyManager.getCRobotY(i) + 2, ' ');
+                            drawScorePanel();
+                        }
+                    }
+                }
+
+                // Her 20 tick'te bir yeni hazine spawn et YENİ
+                if (currentTick % 20 == 0) {
+                    treasureManager.spawnTreasure(board.getMap());
+                    treasureManager.drawTreasures(cn, board.getMap());
                 }
 
                 trailManager.clearOldTrails(cn, currentTick);
