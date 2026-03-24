@@ -9,7 +9,7 @@ public class GameEngine {
     private Console cn;
     private GameBoard board;
     private GameControls controls;
-    private TimeManager timeManager;
+    private Timer timer;
     private TrailManager trailManager;
     private EnemyManager enemyManager;
 
@@ -29,7 +29,7 @@ public class GameEngine {
     public GameEngine() throws Exception {
         cn = Enigma.getConsole("Twins - Maze Game", 200, 50, 12);
         controls = new GameControls(cn);
-        timeManager = new TimeManager();
+        timer = new Timer();
         trailManager = new TrailManager();
         enemyManager = new EnemyManager();
 
@@ -123,7 +123,7 @@ public class GameEngine {
 
                     clearScreen();
                     enemyManager = new EnemyManager();
-                    timeManager  = new TimeManager();
+                    timer  = new Timer();
                     trailManager = new TrailManager();
                     modeManager  = new BModeManager();
                     tracker      = new MoveTrack();
@@ -142,7 +142,7 @@ public class GameEngine {
                 py = result[1];
                 twin = new BCharacter(result[2], result[3]);
                 modeManager.setMode(result[4]);
-                timeManager.setTicks(result[5]);
+                timer.setTicks(result[5]);
                 int robotCount = result[6];
 
                 board = new GameBoard(loadedMap);
@@ -167,8 +167,8 @@ public class GameEngine {
             boolean gameOver = false;
 
             while (true) {
-                timeManager.tick();
-                int currentTick = timeManager.getTicks();
+                timer.Play();
+                int currentTick = timer.getTicks();
 
                 int key = controls.consumeKey();
                 int nextX = px;
@@ -199,7 +199,7 @@ public class GameEngine {
                             );
                         }
                         enemyManager = new EnemyManager();
-                        timeManager  = new TimeManager();
+                        timer = new Timer();
                         trailManager = new TrailManager();
                         modeManager  = new BModeManager();
                         tracker      = new MoveTrack();
@@ -255,7 +255,7 @@ public class GameEngine {
                     }
                     laserManager.cleanInactiveLasers(cn);
 
-                    if (timeManager.isRobotTurn()) {
+                    if (timer.isRobotTurn()) {
                         enemyManager.moveRobots(board, trailManager, currentTick, px, py, twin);
                     }
 
@@ -284,8 +284,7 @@ public class GameEngine {
                 laserManager.drawLasers(cn);
                 laserManager.drawPacks(cn);
                 scoreManager.drawHUD(cn, laserManager.getAmmo());
-
-                Thread.sleep(50);
+                
             }
         }
     }

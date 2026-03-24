@@ -24,29 +24,8 @@ public class GameBoard {
     }
 
     private void initializeMap() {
-        boolean wallCheck;
-        do {
-            wallCheck = true;
-            for (int i = 0; i < mapHeight; i++) {
-                for (int j = 0; j < mapWidth; j++) {
-                    if (i == 0 || i == mapHeight - 1 || j == 0 || j == mapWidth - 1) {
-                        map[i][j] = '#';
-                    } else {
-                        map[i][j] = ' ';
-                    }
-                }
-            }
-            addWalls(4, 8);
-            addWalls(6, 6);
-            addWalls(20, 4);
-            addWalls(5, 3);
-            if (!checkWalls(2, 3))   wallCheck = false;
-            if (!checkWalls(3, 5))   wallCheck = false;
-            if (!checkWalls(4, 7))   wallCheck = false;
-            if (!checkWalls(6, 15))  wallCheck = false;
-            if (!checkConnected())   wallCheck = false;
-            if (wallCheck) break;
-        } while (true);
+        MazeGenerator mazer = new MazeGenerator(map);
+        map = mazer.initializeMap();
     }
 
     public void addWalls(int wallcount, int walllength) {
