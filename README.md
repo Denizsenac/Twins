@@ -86,4 +86,4 @@ Twins/
 This project is for educational purposes.
 
 ---
-*Developed by Denizsenac.*
+
